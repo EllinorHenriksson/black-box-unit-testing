@@ -15,6 +15,9 @@ public class StringFunctions_printHelloWorldTests {
     // The Outpustream.nullOutPutStream() can provide an valid outputstream object that does nothing.
     // For example:
     // StringFunctions.printHelloWorld(new PrintStream(OutputStream.nullOutputStream()));
+    //
+    // Likely you will need to inherit from PrintStream and override println to create your
+    // mock class.
     
     // TODO: Assert that the string "Hello World!" is actually printed.
   }
