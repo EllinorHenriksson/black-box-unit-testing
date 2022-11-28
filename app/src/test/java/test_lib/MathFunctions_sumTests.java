@@ -32,4 +32,11 @@ public class MathFunctions_sumTests {
     
     assertEquals(expected, actual, "Sum of -1 and -2 should be " + expected);
   }
+
+  @Test void sumShouldReturnSumForNegativeAndPositiveInteger() {
+    final int expected = -1;
+    final int actual = MathFunctions.sum(-2, 1);
+    
+    assertEquals(expected, actual, "Sum of -2 and 1 should be " + expected);
+  }
 }
