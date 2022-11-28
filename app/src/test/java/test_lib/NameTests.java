@@ -24,4 +24,8 @@ public class NameTests {
   @Test void constructorShouldNotThrowOnSpaceBetweenFirstAndLastName() {
     assertDoesNotThrow(() -> new Name("Allan Turing"));
   }
+
+  @Test void constructorShouldNotThrowOnHyphen() {
+    assertDoesNotThrow(() -> new Name("Allan-Turing"));
+  }
 }

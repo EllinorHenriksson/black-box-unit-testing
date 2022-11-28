@@ -22,11 +22,9 @@ Yes, I found that the function adds the values at the odd indexes in the array i
 
 ## Name class
 - What do you think the actual bug or bugs are?   
-I'm not sure, but inputting a first and a last name with a space between throws an exception. However, it is not clear from the specification if that should be allowed or not. "Numbers and other characters" could indeed be interpreted as to include spaces.
-
-- How many test cases do you think are needed? Why?
-- Did you find any unexpected behaviors?
-- What are your reccomendations to the developers of `test_lib`?
+- How many test cases do you think are needed? Why?   
+- Did you find any unexpected behaviors?   
+- What are your reccomendations to the developers of `test_lib`?   
 
 ## StringFunctions.printHelloWorld
 - Describe specifically how the mocking was done
