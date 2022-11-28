@@ -31,4 +31,12 @@ class MathFunctions_sumOddTests {
     
     assertEquals(expected, actual, "Sum of odd numbers in: " + Arrays.toString(numbers) + " should be " + expected);
   }
+
+  @Test void sumOddShouldReturnZeroForEmptyArray() {
+    final int expected = 0;
+    int[] numbers = {};
+    final int actual = MathFunctions.sumOdd(numbers);
+    
+    assertEquals(expected, actual, "Sum of odd numbers in: " + Arrays.toString(numbers) + " should be " + expected);
+  }
 }
