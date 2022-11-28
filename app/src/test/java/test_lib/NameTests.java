@@ -20,4 +20,8 @@ public class NameTests {
   @Test void constructorToShort_positive() {
     assertThrows(IllegalArgumentException.class, () -> new Name("A")); // fancy lambda expression to wrap Executable functional interface
   }
+
+  @Test void constructorShouldNotThrowOnSpaceBetweenFirstAndLastName() {
+    assertDoesNotThrow(() -> new Name("Allan Turing"));
+  }
 }

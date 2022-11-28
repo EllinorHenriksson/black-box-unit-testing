@@ -11,17 +11,19 @@ I think you would only need one test case to find the bug, and that is to test t
 Yes, the function subtracted b from a instead of adding it to a.
 
 ## MathFunctions.sumNumbers
-- What do you think the actual bug or bugs are?
+- What do you think the actual bug or bugs are?   
 I think the actual bug is that the function looks at the odd indexes in the array and adds the values at those indexes, instead of looking at the odd values independent of their poition in the array.
 
-- How many test cases do you think are needed? Why?
+- How many test cases do you think are needed? Why?   
 I think you need one test case for positive integers and one for negative integers to see that the addition works, and one test case for values that are randomly distributed in the array to see that the function works with the actual values, not the indexes. I aldo added a testcase to see that the function returned 0 for an empty array, as that is what I suspected since the documentation didn't mention any exceptions.
 
-- Did you find any unexpected behaviors?
-Yes, I found that the function adds the values at the odd indexes in the array instead of adding the odd values independent of index, as is staded in the documentation.
+- Did you find any unexpected behaviors?   
+Yes, I found that the function adds the values at the odd indexes in the array instead of adding the odd values independent of index, as is staded in the documentation. There was no expected behaviour for inputting an empty array, but it turned out to result in the function returning 0.
 
 ## Name class
-- What do you think the actual bug or bugs are?
+- What do you think the actual bug or bugs are?   
+I'm not sure, but inputting a first and a last name with a space between throws an exception. However, it is not clear from the specification if that should be allowed or not. "Numbers and other characters" could indeed be interpreted as to include spaces.
+
 - How many test cases do you think are needed? Why?
 - Did you find any unexpected behaviors?
 - What are your reccomendations to the developers of `test_lib`?
