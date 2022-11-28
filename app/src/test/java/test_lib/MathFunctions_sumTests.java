@@ -12,5 +12,10 @@ public class MathFunctions_sumTests {
     assertEquals(expected, actual, "Sum of 3 and 0 should be " + expected);
   }
 
-  // TODO: Implement more unit tests
+  @Test void sumShouldReturnZeroForZeros() {
+    final int expected = 0;
+    final int actual = MathFunctions.sum(0, 0);
+    
+    assertEquals(expected, actual, "Sum of 0 and 0 should be " + expected);
+  }
 }
