@@ -28,4 +28,8 @@ public class NameTests {
   @Test void constructorShouldNotThrowOnHyphen() {
     assertDoesNotThrow(() -> new Name("Allan-Turing"));
   }
+
+  @Test void constructorShouldNotThrowOnThreeLetterLongName() {
+    assertDoesNotThrow(() -> new Name("All"));
+  }
 }
