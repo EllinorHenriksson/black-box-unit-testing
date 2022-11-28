@@ -23,4 +23,12 @@ class MathFunctions_sumOddTests {
     
     assertEquals(expected, actual, "Sum of odd numbers in: " + Arrays.toString(numbers) + " should be " + expected);
   }
+
+  @Test void sumOddShouldReturnSumForIntegersInRandomOrder() {
+    final int expected = 4;
+    int[] numbers = {1, 0, 3, 2};
+    final int actual = MathFunctions.sumOdd(numbers);
+    
+    assertEquals(expected, actual, "Sum of odd numbers in: " + Arrays.toString(numbers) + " should be " + expected);
+  }
 }
