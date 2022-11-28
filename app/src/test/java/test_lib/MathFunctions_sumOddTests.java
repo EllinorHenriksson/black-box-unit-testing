@@ -16,5 +16,11 @@ class MathFunctions_sumOddTests {
     assertEquals(expected, actual, "Sum of odd numbers in: " + Arrays.toString(numbers) + " should be " + expected);
   }
 
-  // TODO: Implement more unit tests
+  @Test void sumOddShouldReturnSumForNegativeIntegers() {
+    final int expected = -4;
+    int[] numbers = {0, -1, -2, -3};
+    final int actual = MathFunctions.sumOdd(numbers);
+    
+    assertEquals(expected, actual, "Sum of odd numbers in: " + Arrays.toString(numbers) + " should be " + expected);
+  }
 }
