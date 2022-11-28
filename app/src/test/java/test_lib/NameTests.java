@@ -32,4 +32,9 @@ public class NameTests {
   @Test void constructorShouldNotThrowOnThreeLetterLongName() {
     assertDoesNotThrow(() -> new Name("All"));
   }
+
+  
+  @Test void constructorShouldNotThrowOnNonEnglishAlphabets() {
+    assertDoesNotThrow(() -> new Name("åäö"));
+  }
 }

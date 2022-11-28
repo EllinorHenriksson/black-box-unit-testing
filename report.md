@@ -22,9 +22,18 @@ Yes, I found that the function adds the values at the odd indexes in the array i
 
 ## Name class
 - What do you think the actual bug or bugs are?   
+I think the actual bug is that the constuctor throws an IllegalArgumentException for a name consisting of 3 letters. In the specification, it says that the name must be at least 3 characters long.
+
 - How many test cases do you think are needed? Why?   
+One test case is needed to find the bug, namely to test with a name that is exactly 3 letters long. Since the documetation wasn't very clear about wich characters are not allowed in a name, it is also a good idea to test the most common characters in a name, such as space between first and last name, and hyphen in a double name.
+
 - Did you find any unexpected behaviors?   
+Yes, I expected the constructor to not throw an exception when I inputted a 3 letter long name, according to the specification, but it throwed an IllegalArgumentException. Also, I tried to input a first and a last name with a space between, but it resulted in an IllegalArgumentException being throwed. From the documentation I could not conclude if this would happen, but I assumed it would. However, the term "name" is commonly used for first name and last name together, so it would be beneficial to make it clear if that is intended or not. Testing double names with a hyphen between also resulted in an IllegalArgumentException being throwed, even though they are quite common, at least here in Scandinavia. 
+
+Lastly, I tested to input non-english letters such as åäö, but that throwed an IllegalArgumentException, wich was unexpected.
+
 - What are your reccomendations to the developers of `test_lib`?   
+My recommendation is to either fix the bug so that the user can input a 3 character long name, or to update the documentation so it informs the user that the name must be over 3 characters long. Also, the developers should consider if they should allow for first and last names with a space between and/or double names with a hyphen in them, and to make it explicitly clear in the documentation if it is allowed or not. It would also be a good idea to specify what alphabeth can be used, and to cosider to allow for non-english letters such as å, ä and ö.
 
 ## StringFunctions.printHelloWorld
 - Describe specifically how the mocking was done
