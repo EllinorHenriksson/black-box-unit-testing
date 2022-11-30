@@ -28,8 +28,7 @@ I think the actual bug is that the constuctor throws an IllegalArgumentException
 One test case is needed to find the bug, namely to test with a name that is exactly 3 letters long. Since the documetation wasn't very clear about wich characters are not allowed in a name, it is also a good idea to test the most common characters in a name, such as space between first and last name, and hyphen in a double name.
 
 - Did you find any unexpected behaviors?   
-Yes, I expected the constructor to not throw an exception when I inputted a 3 letter long name, according to the specification, but it throwed an IllegalArgumentException. Also, I tried to input a first and a last name with a space between, but it resulted in an IllegalArgumentException being throwed. From the documentation I could not conclude if this would happen, but I assumed it would. However, the term "name" is commonly used for first name and last name together, so it would be beneficial to make it clear if that is intended or not. Testing double names with a hyphen between also resulted in an IllegalArgumentException being throwed, even though they are quite common, at least here in Scandinavia. 
-
+Yes, I expected the constructor to not throw an exception when I inputted a 3 letter long name, according to the specification, but it throwed an IllegalArgumentException. Also, I tried to input a first and a last name with a space between, but it resulted in an IllegalArgumentException being throwed. From the documentation I could not conclude if this would happen, but I assumed it would. However, the term "name" is commonly used for first name and last name together, so it would be beneficial to make it clear if that is intended or not. Testing double names with a hyphen between also resulted in an IllegalArgumentException being throwed, even though they are quite common, at least here in Scandinavia.   
 Lastly, I tested to input non-english letters such as åäö, but that throwed an IllegalArgumentException, wich was unexpected.
 
 - What are your reccomendations to the developers of `test_lib`?   
@@ -40,7 +39,13 @@ My recommendation is to either fix the bug so that the user can input a 3 charac
 The mocking was done manually by ceating a mock class for PrintStream, i.e. a subclass that extends PrintStream. The method println(String x) was overridden by the mock class and implemented by assigning the input to a public attribute called 'printedMessage' in the mock class. The test then asserted if the expected value "Hello World!" was equal to the actual value, i.e. the value of the attribute 'printedMessage', after the method printHelloWorld(PrintStream out) had been called with the mock object. I could thereby assess if the println method had been called with the expected string.
 
 ## Menu class
-- Describe specifically how the mocking was done
-- Describe specifically how you tested that the menu was reprinted - after invalid input
+- Describe specifically how the mocking was done   
+The mocking was done one the PrintStream class with a subclass that overwrites the println(String x) method, and by passing a string of the test input to the Scanner constructor.
+
+- Describe specifically how you tested that the menu was reprinted - after invalid input   
+I tested that the menu was reprinted by overwriting the println method in the PrintStream mock class, where I implemented a counter for when the input contains the exact string "Main Menu". The result of the counter is stored in the public attribute 'numberOfPrints" in the PrintStream mock class. After excersising the system under test (i.e. doMenu()) with an invalid input followed by a valid input, I asserted if the expected value 2 was the same as the actual value (i.e. 'numberOfPrints').
+
 - What are your reccomendations to the developers of `test_lib` specifically focusing on facilitating testing and making less fragile unit tests.   
-- Return action for invalid input instead of reprinting directly in the doMenu method
+I think it would be easier to test doMenu() if it returned an Action for invalid input, and didn't loop through printing of the menu inside the function until the input is correct, but rather outside the method (i.e. calling it until it returnes a valid Action).
+Then you could test how many times the method is called instead of testing how many times the menu is printed. Also, the way I had to test the number of menu prints isn't optimal as I use the string "Main Menu", wich I got from looking at the printed text in the console. If someone wants to change the printed text the test might break.   
+As for now, I had to do explorative testing and run the application to figure out what input was allowed to the program (i.e. 1 and 0). It would be better if it was clearly stated in the specification or in a use case etc.
