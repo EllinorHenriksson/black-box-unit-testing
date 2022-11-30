@@ -22,6 +22,10 @@ public class MenuTests {
     }
   }
 
+  @Test void constructorShouldThrowOnNullPrintStream() {
+    assertThrows(NullPointerException.class, () -> new Menu(null, new Scanner("")));
+  }
+
   @Test void doMenuShouldPrintMenu() {
     final Scanner scan = new Scanner("1");
     final PrintStreamMock mock = new PrintStreamMock(OutputStream.nullOutputStream());
