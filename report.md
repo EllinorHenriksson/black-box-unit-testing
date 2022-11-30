@@ -18,7 +18,7 @@ I think the actual bug is that the function looks at the odd indexes in the arra
 I think you need one test case for positive integers and one for negative integers to see that the addition works, and one test case for values that are randomly distributed in the array to see that the function works with the actual values, not the indexes. I aldo added a testcase to see that the function returned 0 for an empty array, as that is what I suspected since the documentation didn't mention any exceptions.
 
 - Did you find any unexpected behaviors?   
-Yes, I found that the function adds the values at the odd indexes in the array instead of adding the odd values independent of index, as is staded in the documentation. There was no expected behaviour for inputting an empty array, but it turned out to result in the function returning 0.
+Yes, I found that the function adds the values at the odd indexes in the array instead of adding the odd values independent of index, as is stated in the documentation. There was no expected behaviour for inputting an empty array, but it turned out to result in the function returning 0. Also, the method has side effects as it modifies the array. After passing an array of {0, 1, 2, 3} it is modified to {0, 0, 0, 0}.
 
 ## Name class
 - What do you think the actual bug or bugs are?   

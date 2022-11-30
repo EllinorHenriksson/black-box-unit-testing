@@ -16,6 +16,17 @@ class MathFunctions_sumOddTests {
     assertEquals(expected, actual, "Sum of odd numbers in: " + Arrays.toString(numbers) + " should be " + expected);
   }
 
+  @Test void sumOddShouldNotModifyOriginalArray() {
+    int[] numbers = {0, 1, 2, 3};
+    final int[] expected = numbers.clone();
+
+    MathFunctions.sumOdd(numbers);
+
+    final int[] actual = numbers; 
+    
+    assertEquals(expected, actual, "The original array should be " + Arrays.toString(expected) + " after passing it to sumOdd");
+  }
+
   @Test void sumOddShouldReturnSumForNegativeIntegers() {
     final int expected = -4;
     int[] numbers = {0, -1, -2, -3};
