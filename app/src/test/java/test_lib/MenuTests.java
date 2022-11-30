@@ -73,7 +73,7 @@ public class MenuTests {
     final PrintStreamMock mock = new PrintStreamMock(OutputStream.nullOutputStream());
     Menu menu = new Menu(mock, scan);
 
-    final int expected = 3;
+    final int expected = 2;
     menu.doMenu();
     final int actual = mock.numberOfPrints;
     
