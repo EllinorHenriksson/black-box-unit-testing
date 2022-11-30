@@ -7,6 +7,16 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 
 public class StringFunctions_printHelloWorldTests {
+  public class PrintStreamMock extends PrintStream {
+    public String printedMessage;
+    public PrintStreamMock(OutputStream outputStream) {
+      super(outputStream);
+    }
+
+    public void println(String input) {
+      printedMessage = input;
+    }
+  }
   @Test void printHelloWorld() {
 
     // In this test case you need to check that the function under test actually
@@ -20,5 +30,13 @@ public class StringFunctions_printHelloWorldTests {
     // mock class.
     
     // TODO: Assert that the string "Hello World!" is actually printed.
+
+    PrintStreamMock mock = new PrintStreamMock(OutputStream.nullOutputStream());
+    StringFunctions.printHelloWorld(mock);
+
+    final String expected = "Hello World!";
+    final String actual = mock.printedMessage;
+    
+    assertEquals(expected, actual, "Printed message should be " + expected);
   }
 }

@@ -36,7 +36,8 @@ Lastly, I tested to input non-english letters such as åäö, but that throwed a
 My recommendation is to either fix the bug so that the user can input a 3 character long name, or to update the documentation so it informs the user that the name must be over 3 characters long. Also, the developers should consider if they should allow for first and last names with a space between and/or double names with a hyphen in them, and to make it explicitly clear in the documentation if it is allowed or not. It would also be a good idea to specify what alphabeth can be used, and to cosider to allow for non-english letters such as å, ä and ö.
 
 ## StringFunctions.printHelloWorld
-- Describe specifically how the mocking was done
+- Describe specifically how the mocking was done  
+The mocking was done manually by ceating a mock class for PrintStream, i.e. a subclass that extends PrintStream. The method println(String x) was overridden by the mock class and implemented by assigning the input to a public attribute called 'printedMessage' in the mock class. The test then asserted if the expected value "Hello World!" was equal to the actual value, i.e. the value of the attribute 'printedMessage', after the method printHelloWorld(PrintStream out) had been called with the mock object. I could thereby assess if the println method had been called with the expected string.
 
 ## Menu class
 - Describe specifically how the mocking was done
