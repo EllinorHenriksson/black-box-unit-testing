@@ -22,6 +22,10 @@ public class MenuTests {
     }
   }
 
+  @Test void constructorShouldNotThrowOnCorrectArguments() {
+    assertDoesNotThrow(() -> new Menu(new PrintStream(OutputStream.nullOutputStream()), new Scanner("")));
+  }
+
   @Test void constructorShouldThrowOnNullPrintStream() {
     assertThrows(NullPointerException.class, () -> new Menu(null, new Scanner("")));
   }
