@@ -9,14 +9,16 @@ import java.util.Scanner;
 
 public class MenuTests {
   public class PrintStreamMock extends PrintStream {
-    public boolean hasPrinted;
+    public int numberOfPrints;
     public PrintStreamMock(OutputStream outputStream) {
       super(outputStream);
-      hasPrinted = false;
+      numberOfPrints = 0;
     }
 
     public void println(String input) {
-      hasPrinted = true;
+      if (input.contains("Main Menu")) {
+        numberOfPrints++;
+      }
     }
   }
 
@@ -25,11 +27,11 @@ public class MenuTests {
     final PrintStreamMock mock = new PrintStreamMock(OutputStream.nullOutputStream());
     Menu menu = new Menu(mock, scan);
 
-    final boolean expected = true;
+    final int expected = 1;
     menu.doMenu();
-    final boolean actual = mock.hasPrinted;
+    final int actual = mock.numberOfPrints;
     
-    assertEquals(expected, actual, "Menu has been printed should be " + expected);
+    assertEquals(expected, actual, "Menu should have been printed " + expected + " time");
   }
 
   @Test void doMenuShouldReturnDoStuffFor1() {
@@ -52,6 +54,18 @@ public class MenuTests {
     final Menu.Action actual = menu.doMenu();
     
     assertEquals(expected, actual, "Menu action for input 0 should be " + expected);
+  }
+
+  @Test void doMenuShouldPrintMenuTwiceForInvalidInputFollowedByValidInput() {
+    final Scanner scan = new Scanner("2\n1");
+    final PrintStreamMock mock = new PrintStreamMock(OutputStream.nullOutputStream());
+    Menu menu = new Menu(mock, scan);
+
+    final int expected = 3;
+    menu.doMenu();
+    final int actual = mock.numberOfPrints;
+    
+    assertEquals(expected, actual, "Menu should have been printed " + expected + " times");
   }
 
   @Test void doMenuShouldReturnActionForInvalidInputFollowedByValidInput() {
