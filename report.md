@@ -42,4 +42,5 @@ The mocking was done manually by ceating a mock class for PrintStream, i.e. a su
 ## Menu class
 - Describe specifically how the mocking was done
 - Describe specifically how you tested that the menu was reprinted - after invalid input
-- What are your reccomendations to the developers of `test_lib` specifically focusing on facilitating testing and making less fragile unit tests.
+- What are your reccomendations to the developers of `test_lib` specifically focusing on facilitating testing and making less fragile unit tests.   
+- Return action for invalid input instead of reprinting directly in the doMenu method
