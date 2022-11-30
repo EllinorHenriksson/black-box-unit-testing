@@ -9,13 +9,11 @@ import java.util.Scanner;
 
 public class MenuTests {
   public class PrintStreamMock extends PrintStream {
-    public String printedMessage;
     public PrintStreamMock(OutputStream outputStream) {
       super(outputStream);
     }
 
     public void println(String input) {
-      printedMessage = input;
     }
   }
   @Test void doMenuShouldReturnDoStuffFor1() {
@@ -38,5 +36,16 @@ public class MenuTests {
     final Menu.Action actual = menu.doMenu();
     
     assertEquals(expected, actual, "Menu action for input 0 should be " + expected);
+  }
+
+  @Test void doMenuShouldReturnQuitForInvalidInputFollowedBy0() {
+    final Scanner scan = new Scanner("2\n0");
+    final PrintStreamMock mock = new PrintStreamMock(OutputStream.nullOutputStream());
+    Menu menu = new Menu(mock, scan);
+
+    final Menu.Action expected = Menu.Action.Quit;
+    final Menu.Action actual = menu.doMenu();
+    
+    assertEquals(expected, actual, "Menu action for invalid input followed by 0 should be " + expected);
   }
 }
