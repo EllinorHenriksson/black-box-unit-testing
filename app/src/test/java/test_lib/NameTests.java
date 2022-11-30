@@ -9,6 +9,14 @@ public class NameTests {
     assertDoesNotThrow(() -> new Name("Allan"));
   }
 
+  @Test void constructorShouldThrowOnDotFirstInName() {
+    assertThrows(IllegalArgumentException.class, () -> new Name(".Allan"));
+  }
+
+  @Test void constructorShouldThrowOnDotSecondInName() {
+    assertThrows(IllegalArgumentException.class, () -> new Name("A.llan"));
+  }
+
   @Test void constructorNullArgument_positive() {
     assertThrows(NullPointerException.class, () -> new Name(null)); // fancy lambda expression to wrap Executable functional interface
   }

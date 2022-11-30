@@ -22,13 +22,30 @@ Yes, I found that the function adds the values at the odd indexes in the array i
 
 ## Name class
 - What do you think the actual bug or bugs are?   
-I think the actual bug is that the constuctor throws an IllegalArgumentException for a name consisting of 3 letters. In the specification, it says that the name must be at least 3 characters long.
+I think there are 2 bugs. One is that the constuctor throws an IllegalArgumentException for a name consisting of 3 letters. In the specification, it says that the name must be at least 3 characters long. For example, the code may look like this:
+```
+if (name.length > 3) {
+  // Some code here
+} else {
+  throw new IllegalArgumentException();
+}
+```
+...when it should really look like this:
+```
+if (name.length >= 3) {
+  // Some code here
+} else {
+  throw new IllegalArgumentException();
+}
+```
+
+The second bug is that the constructor accepts names that start with a non-letter character, when it - according to the specification - should throw an IllegalArgumentException. This might be caused by looping through the positions of the array, looking at the respecive character, accidently starting on index 1 instead of 0.
 
 - How many test cases do you think are needed? Why?   
-One test case is needed to find the bug, namely to test with a name that is exactly 3 letters long. Since the documetation wasn't very clear about wich characters are not allowed in a name, it is also a good idea to test the most common characters in a name, such as space between first and last name, and hyphen in a double name.
+One test case is needed to find the name length bug, namely to test with a name that is exactly 3 letters long. Two test cases are needed to find the non-letter character at first position bug; one to test a name that starts with a non-letter character, and one test to test a name that has a non-letter character at a later position. Since the documetation wasn't very clear about wich characters are not allowed in a name, it is also a good idea to test the most common characters in a name, such as space between first and last name, and hyphen in a double name.
 
 - Did you find any unexpected behaviors?   
-Yes, I expected the constructor to not throw an exception when I inputted a 3 letter long name, according to the specification, but it throwed an IllegalArgumentException. Also, I tried to input a first and a last name with a space between, but it resulted in an IllegalArgumentException being throwed. From the documentation I could not conclude if this would happen, but I assumed it would. However, the term "name" is commonly used for first name and last name together, so it would be beneficial to make it clear if that is intended or not. Testing double names with a hyphen between also resulted in an IllegalArgumentException being throwed, even though they are quite common, at least here in Scandinavia.   
+Yes, I expected the constructor to not throw an exception when I inputted a 3 letter long name, according to the specification, but it throwed an IllegalArgumentException. I also expected the constructor to throw an IllegalArgumentException for a non-letter character at the start of a name, but it didn't. Apart from the bugs, I tried to input a first and a last name with a space between, but it resulted in an IllegalArgumentException being throwed. From the documentation I could not conclude if this would happen, but I assumed it would. However, the term "name" is commonly used for first name and last name together, so it would be beneficial to make it clear if that is intended or not. Testing double names with a hyphen between also resulted in an IllegalArgumentException being throwed, even though they are quite common, at least here in Scandinavia.   
 Lastly, I tested to input non-english letters such as åäö, but that throwed an IllegalArgumentException, wich was unexpected.
 
 - What are your reccomendations to the developers of `test_lib`?   
