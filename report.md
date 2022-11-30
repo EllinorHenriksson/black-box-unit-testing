@@ -49,7 +49,7 @@ Yes, I expected the constructor to not throw an exception when I inputted a 3 le
 Lastly, I tested to input non-english letters such as åäö, but that throwed an IllegalArgumentException, wich was unexpected.
 
 - What are your reccomendations to the developers of `test_lib`?   
-My recommendation is to either fix the bug so that the user can input a 3 character long name, or to update the documentation so it informs the user that the name must be over 3 characters long. Also, the developers should consider if they should allow for first and last names with a space between and/or double names with a hyphen in them, and to make it explicitly clear in the documentation if it is allowed or not. It would also be a good idea to specify what alphabeth can be used, and to cosider to allow for non-english letters such as å, ä and ö.
+My recommendation is to either fix the name length bug so that the user can input a 3 character long name, or to update the documentation so it informs the user that the name must be over 3 characters long. Regarding the non-letter character at start of name bug, I think they should fix the bug so that non-allowed characters are not allowed regardless of position. Also, the developers should consider if they should allow for first and last names with a space between and/or double names with a hyphen in them, and to make it explicitly clear in the documentation if it is allowed or not. It would also be a good idea to specify what alphabeth can be used, and to cosider to allow for non-english letters such as å, ä and ö.
 
 ## StringFunctions.printHelloWorld
 - Describe specifically how the mocking was done  
